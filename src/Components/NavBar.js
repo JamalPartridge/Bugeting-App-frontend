@@ -6,9 +6,9 @@ return(
         <h1>
             <Link to="/">Home</Link>
         </h1>
-        <h1>
+        <button>
             <Link to="/transaction/new">New Transaction</Link>
-        </h1>
+        </button>
     </nav>
-)
+);
 }

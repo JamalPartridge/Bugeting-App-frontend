@@ -1,10 +1,10 @@
-import EdtiTransaction from "../components/EdtiTransaction";
+import EdtiTransaction from "../Components/EditTransaction";
 
 function Edit() {
   return (
     <div className="editShow">
       <h1>Edit</h1>
-      <TransactionEditForm />
+      <EdtiTransaction />
     </div>
   );
 }

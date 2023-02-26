@@ -15,32 +15,28 @@ function EditTransaction(){
     });
 
     const handleTextChange = (event) => {
-        setTransaction({ ...editTrans, [event.target.id]: event.target.value });
+        setEditTrans({ ...editTrans, [event.target.id]: event.target.value });
       };
     
-      const updateTransaction = () => {
+      const handleSubmit = (event) => {
+        event.preventDefault();
         axios
-          .put(`${API}/transactions/${index}`, editTrans)
-          .then((response) => {
-            setEditTrans(response.data);
-            navigate(`/transactions/${index}`);
-          })
-          .catch((c) => console.warn("catch", c));
+      .put(`${API}/transactions/${index}`, editTrans)
+      .then((res) => {
+        setEditTrans(res.data);
+        navigate(`/transactions/${index}`);
+      })
+      .catch((err) => console.log(err));
       };
     
       useEffect(() => {
         axios
           .get(`${API}/transactions/${index}`)
-          .then((response) => {
-            setEditTrans(response.data);
-          })
-          .catch((e) => console.error(e));
-      }, [index]);
+          .then((res) => setEditTrans(res.data))
+          .catch((err) => console.log(err));
+      }, [index, useNavigate()]);
     
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        updatetransaction();
-      };
+      
       return (
         <div className="Edit">
           <form onSubmit={handleSubmit}>
@@ -48,7 +44,7 @@ function EditTransaction(){
             <input
               id="date"
               type="date"
-              value={transaction.date}
+              value={editTrans.date}
               placeholder="date"
               onChange={handleTextChange}
               required
@@ -57,7 +53,7 @@ function EditTransaction(){
             <input
               id="item_name"
               type="text"
-              value={transaction.item_name}
+              value={editTrans.item_name}
               placeholder="name"
               onChange={handleTextChange}
               required
@@ -67,7 +63,7 @@ function EditTransaction(){
               id="amount"
               name="amount"
               type="number"
-              value={transaction.amount}
+              value={editTrans.amount}
               placeholder="amount"
               onChange={handleTextChange}
             />
@@ -76,7 +72,7 @@ function EditTransaction(){
               id="from"
               type="text"
               required
-              value={transaction.from}
+              value={editTrans.from}
               placeholder="from"
               onChange={handleTextChange}
             />
@@ -85,7 +81,7 @@ function EditTransaction(){
               id="category"
               type="text"
               name="category"
-              value={transaction.category}
+              value={editTrans.category}
               placeholder="category"
               onChange={handleTextChange}
             />
