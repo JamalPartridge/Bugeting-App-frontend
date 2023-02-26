@@ -1,6 +1,5 @@
 import React from "react";
 import TransNewForm from "../Components/TransNewForm";
-import "./New.css";
 
 function New() {
   return (
