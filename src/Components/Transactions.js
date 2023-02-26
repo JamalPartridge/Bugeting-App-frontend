@@ -20,7 +20,7 @@ function Transactions() {
     }, [])
 
     return (
-        
+        <div></div>
     )
 }
 
