@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+
 const API = process.env.REACT_APP_API_URL;
 
 function TransactionNewForm() {
@@ -17,22 +18,19 @@ function TransactionNewForm() {
     setTransaction({ ...transaction, [event.target.id]: event.target.value });
   };
   
-  const addTransaction = (newTransaction) => {
-    axios
-    .post(`${API}/transactions`, newTransaction)
-    .then(
-    () => {
-    navigate(`/transactions`);
-    })
-    .catch((c) => console.error("catch", c));
-   };
-   
   const handleSubmit = (event) => {
     event.preventDefault();
-    addTransaction(transaction)
-  };
+  
+    axios
+    .post(`${API}/transactions`, transaction)
+    .then(() => {
+    navigate(`/transactions`);
+    })
+    .catch((err) => console.log(err));
+   };
+   
   return (
-    <div className="New-Transaction" >
+    <div className="newForm" >
       <form onSubmit={handleSubmit}>
       <label htmlFor="date">Date</label>
         <input
@@ -81,10 +79,10 @@ function TransactionNewForm() {
         />
         <br />
         <input type="submit" />
-      </form>
       <Link to={"/transactions"}>
             <button>Delete</button>
           </Link>
+      </form>
     </div>
   );
 }

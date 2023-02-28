@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import transactions from "../css/transactions.css"
+
 
 const API = process.env.REACT_APP_API_URL
 
@@ -13,16 +15,15 @@ function Transactions() {
             .then((res) => {
                 setTransactions(res.data)
             })
-            .catch(err => console.log(err))
-    }, [])
+            .catch((err) => console.log(err))
+    }, []);
 
     const transactionList = transactions.map((transaction, index) => {
         return (
           <li key={index}>
             <span className="transactionDetails">
               {transaction.date}
-              <Link to={`/transactions/${index}`}>{transaction.item_name}</Link>$
-              {transaction.amount}
+              <Link to={`/transactions/${index}`}>{transaction.item_name}</Link>${transaction.amount}
             </span>
           </li>
         );
@@ -30,7 +31,7 @@ function Transactions() {
     
       let array = [];
       
-      const bankTotal = array.reduce((a, b) => a + b, 0);
+      const balance = array.reduce((a, b) => a + b, 0);
     
       const colorCode = (total) => {
         if (total >= 1000) {
@@ -44,10 +45,10 @@ function Transactions() {
 
     return (
         <div className="transactions">
-      <p className="bankTotal">
-        Bank Account Total:{" "}
-        <span style={{ color: colorCode(bankTotal) }}>
-          ${bankTotal.toFixed(2)}
+      <p className="balance">
+        Account Total:{" "}
+        <span style={{ color: colorCode(balance) }}>
+          ${balance.toFixed(2)}
         </span>
       </p>
       <ul className="list">{transactionList}</ul>

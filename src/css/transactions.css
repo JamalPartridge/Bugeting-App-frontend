@@ -1,0 +1,28 @@
+.list {
+    list-style: none;
+    border-bottom: 2px solid maroon; 
+}
+
+.back {
+    outline: 2px solid white;
+    margin: 10px;
+    color: black;
+}
+
+.transactions {
+    font-weight: bold;
+    font-style: italic;
+    font-size: larger;
+}
+
+.transactionDetails {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.balance {
+    font-weight: bold;
+    font-size: larger;
+  }
+

@@ -13,7 +13,7 @@ function EditTransaction(){
     from: "",
     category: "",
     });
-
+    
     const handleTextChange = (event) => {
         setEditTrans({ ...editTrans, [event.target.id]: event.target.value });
       };
@@ -34,7 +34,7 @@ function EditTransaction(){
           .get(`${API}/transactions/${index}`)
           .then((res) => setEditTrans(res.data))
           .catch((err) => console.log(err));
-      }, [index, useNavigate()]);
+      }, [index, navigate]);
     
       
       return (

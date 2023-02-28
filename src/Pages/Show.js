@@ -1,4 +1,4 @@
-import TransactionDetails from "../Components/TransactionDetails";
+import TransactionDetails from "../Components/TransactionDetials";
 
 function Show() {
   return (

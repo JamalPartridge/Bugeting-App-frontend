@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import transaction from ".css/transaction.css";
+
 const API = process.env.REACT_APP_API_URL;
 
-export default function Transaction() {
+function Transaction() {
   const [transaction, setTransaction] = useState([]);
   const { index } = useParams();
   const navigate = useNavigate();
@@ -45,3 +47,5 @@ export default function Transaction() {
     </div>
   );
 }
+
+export default Transaction;

@@ -1,16 +1,22 @@
 * {
-    text-align: center;
     font-family: sans-serif;
   }
   
-  body {
-    background-color: black;
-    color: white;
+body {
+    background-color: midnightblue;
+    color: maroon;
     margin: 0 auto;
   }
   
-  .main {
+.main {
     margin: 85px;
     padding: 25px;
     border: 2px solid white;
+}
+
+.home
+
+
+.Show {
+    display: flex;
 }
