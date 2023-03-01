@@ -9,18 +9,9 @@ const API = process.env.REACT_APP_API_URL
 function Transactions() {
     const [transactions, setTransactions] = useState([]);
 
-    useEffect(() => {
-        axios
-            .get(`${API}/transactions`)
-            .then((res) => {
-                setTransactions(res.data)
-            })
-            .catch((err) => console.log(err))
-    }, []);
-
     const transactionList = transactions.map((transaction, index) => {
-        return (
-          <li key={index}>
+      return (
+        <li key={index}>
             <span className="transactionDetails">
               {transaction.date}
               <Link to={`/transactions/${index}`}>{transaction.item_name}</Link>${transaction.amount}
@@ -28,11 +19,11 @@ function Transactions() {
           </li>
         );
       });
-    
+      
       let array = [];
       
       const balance = array.reduce((a, b) => a + b, 0);
-    
+      
       const colorCode = (total) => {
         if (total >= 1000) {
           return "green";
@@ -43,7 +34,16 @@ function Transactions() {
         }
       };
 
-    return (
+      useEffect(() => {
+          axios
+              .get(`${API}/transactions`)
+              .then((res) => {
+                  setTransactions(res.data)
+              })
+              .catch((err) => console.log(err))
+      }, []);
+      
+      return (
         <div className="transactions">
       <p className="balance">
         Account Total:{" "}

@@ -10,21 +10,21 @@ function Transaction() {
   const { index } = useParams();
   const navigate = useNavigate();
 
+  const handleDelete = () => {
+    axios
+    .delete(`${API}/transactions/${index}`)
+    .then(() => {
+      navigate("/transactions");
+    })
+    .catch((err) => console.log(err));
+  };
+  
   useEffect(() => {
     axios
       .get(`${API}/transactions/${index}`)
       .then((res) => setTransaction(res.data))
       .catch((err) => console.log(err));
   }, [index]);
-
-  const handleDelete = () => {
-    axios
-      .delete(`${API}/transactions/${index}`)
-      .then(() => {
-        navigate("/transactions");
-      })
-      .catch((err) => console.log(err));
-  };
 
   return (
     <div className="transaction">

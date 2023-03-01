@@ -9,6 +9,15 @@ function TransactionDetails() {
   let navigate = useNavigate();
 
   
+  const handleDelete = () => {
+    axios
+    .delete(`${API}/transactions/${index}`)
+    .then(() => {
+      navigate(`/transactions`);
+    })
+    .catch((e) => console.error(e));
+  };
+
   useEffect(() => {
     axios
     .get(`${API}/transactions/${index}`)
@@ -17,16 +26,7 @@ function TransactionDetails() {
     })
     .catch(() => {navigate('/not-found')});
   }, [index, navigate]);
-
-
-  const handleDelete = () => {
-    axios
-      .delete(`${API}/transactions/${index}`)
-      .then(() => {
-        navigate(`/transactions`);
-      })
-      .catch((e) => console.error(e));
-  };
+  
   return (
     <article className="Show">
       <h2>{transaction.item_name} - ${transaction.amount}</h2>
