@@ -10,9 +10,7 @@ function Transaction({index, transaction}) {
   const handleDelete = () => {
     axios
     .delete(`${API}/transactions/${index}`)
-    .then(() => 
-      navigate("/transactions")
-    )
+    .then((res) => navigate("/transactions"))
     .catch((err) => console.log(err));
   };
 
