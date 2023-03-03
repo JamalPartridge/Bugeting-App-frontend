@@ -13,9 +13,9 @@ function Transactions() {
     useEffect(() => {
       axios
       .get(`${API}/transactions`)
-      .then((res) => {
+      .then((res) => 
         setTransactions(res.data)
-      })
+      )
       .catch((err) => console.log(err))
     }, []);
     
@@ -32,18 +32,15 @@ function Transactions() {
       
       return (
         <div className="transactions">
-      <p className="balance">
-        Account Total: <span className={color}>${balance}</span>
-      </p>
-      {transactions.map((transaction, index) => {
+          <p className="balance">Account Total: <span className={color}>${balance}</span></p>
+     <ul> {transactions.map((transaction, index) => {
 							return (
 								<Transaction
 									key={index}
 									transaction={transaction}
-									index={index}
-								/>
+									index={index} />
 							);
-						})}
+						})}</ul>
      
       <Link to={"/"}>
         <button className="back">Back</button>

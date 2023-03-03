@@ -37,16 +37,16 @@ function TransactionDetails() {
       <div className="showNavigation">
         <div className="transaction">
           <Link to={`/transactions`}>
-            <button>Back</button>
+            <button className="backButton">Back</button>
           </Link>
         </div>
         <div>
           <Link to={`/transactions/${index}/edit`}>
-            <button>Edit</button>
+            <button className="editButton">Edit</button>
           </Link>
         </div>
         <div>
-          <button onClick={handleDelete}>Delete</button>
+          <button onClick={handleDelete} className="deleteButton">Delete</button>
         </div>
       </div>
     </article>

@@ -19,4 +19,12 @@ body {
 
 .Show {
     display: flex;
+    font-family: sans-serif;
+    color: white;
+}
+
+.transactions {
+  display: grid;
+  font-family: sans-serif;
+  color: aliceblue;
 }

@@ -20,6 +20,7 @@ function EditTransaction(){
     
       const handleSubmit = (event) => {
         event.preventDefault();
+        
         axios
       .put(`${API}/transactions/${index}`, editTrans)
       .then((res) => {
